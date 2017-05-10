@@ -1,24 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="icon" href="MIR.jpg">
-	<title>Mir Raonaq | Projects</title>
-	<meta name="author" content="Mir Raonaq">
-	<meta name="application" content="Atom">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<link rel="stylesheet" href="index.css" type="text/css">
+  <link rel="icon" href="MIR.jpg">
+  <title>Mir Raonaq | Projects</title>
+  <meta name="author" content="Mir Raonaq">
+  <meta name="application" content="Atom">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <link rel="stylesheet" href="index.css" type="text/css">
 </head>
 
 <body>
 
-<ul>
-	<li><a href="index.html">Home</a></li>
-	<li><a href="projects.html">Projects</a></li>
-	<li><a href="Resume.pdf" target="_blank">Resume</a></li>
-	<li><a href="Media.html">Social Media</a></li>
-</ul>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="projects.html">Portfolio</a></li>
+    <li><a href="Resume.pdf" target="_blank">Resume</a></li>
+    <li><a href="Media.html">Social Media</a></li>
+  </ul>
 
+  <script>
+	jQuery('body').css('display','none');
+	jQuery(document).ready(function() {
+		jQuery('body').fadeIn();
+		jQuery('a').on('click',function(event){
+			var thetarget = this.getAttribute('target')
+			if (thetarget != "_blank"){
+				var thehref = this.getAttribute('href')
+				event.preventDefault();
+				jQuery('body').fadeOut(function(){
+					window.location = thehref
+				});
+			}
+		});
+	});
+	setTimeout(function(){
+		jQuery('body').fadeIn();
+	},1000)
+	</script>
+
+	<script type="text/javascript">
+	window.addEventListener('keydown', function (event) {
+		if (event.keyCode === 123 || event.keyCode === 17 || event.keyCode === 85 || event.keyCode === 73 || event.keyCode === 16 || event.keyCode === 67) {
+
+			event.preventDefault();
+
+			return false;
+		}
+
+
+	});
+	</script>
 
 </body>
 </html>
