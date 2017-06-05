@@ -56,8 +56,6 @@ input, textarea {
     border-radius:3px;
 }
 
-.form{
-    display:block;
-     margin-top:20px;
-    letter-spacing:2px;
+body > div {
+    
 }
