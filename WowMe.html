@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="WowMe.css"/>
+  <title>Math Test</title>
+</head>
+<body>
+  <h1>Should you retake Algebra?</h1>
+
+  <h2> Follow Directions Carefully, use Calculator if Necessary!</h2>
+
+  <div id="background">
+
+    <div id="result"></div>
+
+    <div id="main">
+      <div id="first-rows">
+        <button class="del-bg" id="del">Del</button>
+        <button value="%" class="btn-style operator opera-bg fall-back">%</button>
+        <button value="+" class="btn-style opera-bg value align operator">+</button>
+      </div>
+
+      <div class="rows">
+        <button value="7" class="btn-style num-bg num first-child">7</button>
+        <button value="8" class="btn-style num-bg num">8</button>
+        <button value="9" class="btn-style num-bg num">9</button>
+        <button value="-" class="btn-style opera-bg operator">-</button>
+      </div>
+
+      <div class="rows">
+        <button value="4" class="btn-style num-bg num first-child">4</button>
+        <button value="5" class="btn-style num-bg num">5</button>
+        <button value="6" class="btn-style num-bg num">6</button>
+        <button value="*" class="btn-style opera-bg operator">x</button>
+      </div>
+
+      <div class="rows">
+        <button value="1" class="btn-style num-bg num first-child">1</button>
+        <button value="2" class="btn-style num-bg num">2</button>
+        <button value="3" class="btn-style num-bg num">3</button>
+        <button value="/" class="btn-style opera-bg operator">/</button>
+      </div>
+
+      <div class="rows">
+        <button value="0" class="num-bg zero" id="delete">0</button>
+        <button value="." class="btn-style num-bg period fall-back">.</button>
+        <button value="=" id="eqn-bg" class="eqn align">=</button>
+      </div>
+
+    </div>
+
+  </div>
+  <script>
+
+
+  window.onload = function() {
+
+    var current,
+    screen,
+    output,
+    limit,
+    zero,
+    period,
+    operator;
+
+    screen = document.getElementById("result");
+
+    var elem = document.querySelectorAll(".num");
+
+    var len = elem.length;
+
+    for(var i = 0; i < len; i++ ) {
+
+      elem[i].addEventListener("click",function() {
+
+        num = this.value;
+
+        output = screen.innerHTML +=num;
+
+        limit = output.length;
+
+        if(limit > 16 ) {
+
+          alert("Sorry no more input is allowed");
+
+        }
+
+      },false);
+
+    }
+
+    document.querySelector(".zero").addEventListener("click",function() {
+
+      zero = this.value;
+
+      if(screen.innerHTML === "") {
+
+        output = screen.innerHTML = zero;
+      }
+
+      else if(screen.innerHTML === output) {
+
+        output = screen.innerHTML +=zero;
+
+      }
+
+    },false);
+
+    document.querySelector(".period").addEventListener("click",function() {
+
+      period = this.value;
+
+      if(screen.innerHTML === "") {
+
+        output = screen.innerHTML = screen.innerHTML.concat("0.");
+
+      }
+
+      else if(screen.innerHTML === output) {
+
+        screen.innerHTML = screen.innerHTML.concat(".");
+
+      }
+
+    },false);
+
+
+    document.querySelector("#eqn-bg").addEventListener("click",function() {
+
+      if(screen.innerHTML === output) {
+
+        screen.innerHTML = eval(output);
+      }
+
+      else {
+        screen.innerHTML = "";
+      }
+
+    },false);
+
+    document.querySelector("#delete").addEventListener("click",function() {
+
+      screen.innerHTML = "";
+
+    },false);
+
+
+    var elem1 = document.querySelectorAll(".operator");
+
+    var len1 = elem1.length;
+
+    for(var i = 0; i < len1; i++ ) {
+
+      elem1[i].addEventListener("click",function() {
+
+        operator = this.value;
+
+        if(screen.innerHTML === "") {
+
+          screen.innerHTML = screen.innerHTML.concat("");
+
+        }
+
+        else if(output) {
+
+          screen.innerHTML = output.concat(operator);
+
+        }
+
+      },false);
+
+    }
+
+  }
+
+  </script>
+  <p> Calculator was made with the help of w3schools.com </p>
+  <h2>Enter Your Answers Below! </h2>
+  <hr>
+  <p>All fields with <i>*</i> must be filled.</p>
+  <form  method="post">
+
+    <br><p> Find the x intercept of the graph of the equation: 2x - 4y = 9<i>*</i></p> <input type="text" id="one" name="firstQuestion" placeholder="Answer" required><br>
+    <br><p> Evaluate f(2) - f(1): f(x) = 6x + 1<i>*</i> </p> <input type="text" id="two" name="secondQuestion" placeholder="Answer" required><br>
+    <br><p> Find the distance between the points (-4 & -5) <i>*</i></p><input type="text" id="three" name="threeQuestion" placeholder="Answer" required><br>
+    <br><p> Solve for |-8 + 2|<i>*</i></p><input type="text" id="four" name="fourthQuestion" placeholder="Answer" required><br>
+    <br><p> If a mother goose laid two eggs every 9 days, how many eggs would a mother goose lay in 81 days?<i>*</i></p><input type="text" id="five" name="fifthQuestion" placeholder="Answer" required><br>
+
+    <br><br>
+
+
+    <br>
+    <br>
+    <button class=btn onclick ="calculate()">
+      Submit
+    </button>
+    <button class="btn" onclick="input()">
+      Check my answers
+    </button>
+    <br>
+    <br>
+
+  </form>
+  <br>
+
+  <br>
+  <br>
+
+
+  <br>
+  <br>
+  <script>
+  function calculate(){
+
+    var one = document.getElementById("one").value;
+    var two = document.getElementById("two").value;
+    var three = document.getElementById("three").value;
+    var four = document.getElementById("four").value;
+    var five = document.getElementById("five").value;
+
+    if(one != "" && two != "" && three != "" && four != "" && five != ""){
+      if(one == "4.5" && two == "6" && three == "1" && four == "6" && five == "18"){
+        congrats();
+      }else if (one != "4.5" || two != "6" || three != "1" || four != "6" || five != "18") {
+        alert("Consider Retaking Algebra");
+      }
+
+
+    }
+  }
+  function input(){
+    var one = document.getElementById("one").value;
+    var two = document.getElementById("two").value;
+    var three = document.getElementById("three").value;
+    var four = document.getElementById("four").value;
+    var five = document.getElementById("five").value;
+    if(one == "4.5" && two == "6" && three == "1" && four == "6" && five == "18"){
+      calculate();
+    }else if (one != "4.5" || two != "6" || three != "1" || four != "6" || five != "18") {
+      alert("Check your work something may be wrong");
+    }
+  }
+
+  function congrats(){
+    window.open("http://www.smileyme.com/school-supplies/award-certificates/certificate-mickey-mouse-you-did-it-accomplishment.gif");
+  }
+
+  </script>
+  <h3><a href="HowTo.html">Learn How to do These Problems</a> <br> </h3>
+  <h3><a href="Answer.html">ANSWER KEY</a> <br> </h3>
+  <h3><a href="Contact.html">Contact Me!</a> <br> </h3>
+  <h3><a href="index.html">Back to Home Page</a> <br> </h3>
+  
+  <p>
+<a href="http://jigsaw.w3.org/css-validator/check/referer">
+    <img style="border:0;width:88px;height:31px"
+        src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+        alt="Valid CSS!" />
+    </a>
+</p>
+</body>
+</html>
